@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<string.h>
 
-#define N 5
+#define N 3
 #define MAX_STRLEN 30
 
 // Definisci il tipo di dato struct s_studente
@@ -32,7 +32,7 @@ int main(int argc, char** argv) {
         printf("Inserisci la classe dello studente %d: ", i);
         scanf("%s", studente[i].classe);
         printf("Inserisci l'eta' dello studente %d: ", i);
-        scanf("&d", &(studente[i].eta));
+        scanf("%d", &(studente[i].eta));
         
     }
     
@@ -41,7 +41,8 @@ int main(int argc, char** argv) {
     
     // Codice per la stampa dei dati (uno studente per riga)
     for(i = 0; i < N; i++) {
-    printf("%s; %s; %s; %s;", studente[i].nome, studente[i].cognome, studente[i].eta, studente[i].classe);
+    printf("%s; %s; %d; %s;", studente[i].nome, studente[i].cognome, studente[i].eta, studente[i].classe);
+    printf("\n");
     }
     return (EXIT_SUCCESS);
 }
@@ -54,14 +55,14 @@ void Ordina_Record(struct s_studente v[]) {
     for(x = 0; x < (N - 1); x++) {        
     pos_min = x;
       for(i = x + 1; i < N; i++) {          
-            if(strcmp (v[i].cognome,v[pos_min].cognome) < 0) {
+            if(strcmp(v[i].cognome,v[pos_min].cognome) < 0) {
             pos_min = i;
             }
       
                     if(x != pos_min) {           
-                    aiuto = v[pos_min];
-                    v[pos_min] = v[x];
-                    v[x] = aiuto;
+                    aiuto = v[x];
+                    v[x] = v[pos_min];
+                    v[pos_min] = aiuto;
                     }
         }
     }
